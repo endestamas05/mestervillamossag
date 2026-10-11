@@ -69,7 +69,7 @@
         </div>
     </section>
 
-    <!-- Rólunk Section -->
+    <!-- Rólunk Section (Profilképpel) -->
     <section id="rolunk" class="py-20 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -94,20 +94,15 @@
                         </li>
                     </ul>
                 </div>
-                <div class="bg-gradient-to-br from-amber-500/10 to-slate-900 border border-amber-500/20 p-8 sm:p-10 rounded-3xl relative">
-                    <div class="absolute -top-4 -right-4 bg-amber-500 text-slate-950 font-black px-4 py-2 rounded-xl text-sm shadow-lg">
-                        2010 ÓTA
-                    </div>
-                    <h4 class="text-2xl font-bold text-white mb-4">Számíthat rám a tervezéstől a kivitelezésig</h4>
-                    <p class="text-slate-400 mb-6">Legyen szó egy konnektor bekötéséről, egy teljes lakás felújításáról vagy bonyolult okosotthon vezérlések beüzemeléséről, a minőség garantált.</p>
-                    <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between gap-4 text-sm">
-                        <div>
-                            <span class="block text-slate-500">Elérhetőség</span>
-                            <span class="text-white font-semibold">Hétfő – Péntek</span>
-                        </div>
-                        <div>
-                            <span class="block text-slate-500">Vállalkozás</span>
-                            <span class="text-white font-semibold">Egyéni Vállalkozó (Számlaképes)</span>
+                
+                <!-- Profilkép megjelenítése -->
+                <div class="relative flex justify-center">
+                    <div class="absolute inset-0 bg-amber-500/10 rounded-3xl blur-xl -z-10"></div>
+                    <div class="relative rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl max-w-md w-full bg-slate-900">
+                        <img src="images/profil.jpg" alt="Mester György villanyszerelő" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-6 pt-12">
+                            <h4 class="text-xl font-bold text-white">Mester György</h4>
+                            <p class="text-amber-400 text-sm font-medium">Villanyszerelő E.V. (2010 óta)</p>
                         </div>
                     </div>
                 </div>
@@ -218,7 +213,7 @@
                     </div>
                 </div>
 
-                <!-- Email kiküldő űrlap (mailto) -->
+                <!-- Email kiküldő űrlap -->
                 <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
                     <form action="mailto:mestergyorgy9@gmail.com" method="POST" enctype="text/plain" class="space-y-6">
                         <div>
