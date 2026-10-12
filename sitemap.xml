@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <!-- Főoldal -->
     <url>
-        <loc>https://mestergyorgyvillany.hu/</loc>
+        <loc>https://mestervillamossag.hu/</loc>
         <lastmod>2026-10-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <!-- Impresszum -->
     <url>
-        <loc>https://mestergyorgyvillany.hu/impresszum.html</loc>
+        <loc>https://mestervillamossag.hu/impresszum.html</loc>
         <lastmod>2026-10-12</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <!-- Adatvédelmi nyilatkozat -->
     <url>
-        <loc>https://mestergyorgyvillany.hu/adatvedelem.html</loc>
+        <loc>https://mestervillamossag.hu/adatvedelem.html</loc>
         <lastmod>2026-10-12</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
