@@ -419,18 +419,18 @@
               method="POST"
               class="space-y-6"
             >
-              <!-- Ide be kell tenned a saját ingyenes kulcsodat, amit a web3forms.com-on kapsz (1 perc regisztráció) -->
+              <!-- Web3Forms Access Key -->
               <input
                 type="hidden"
                 name="access_key"
                 value="9cbaba25-4f74-4ddd-acdf-47f264bd1f1e"
               />
 
-              <!-- Irányítás a saját köszönőoldalunkra -->
+              <!-- Irányítás a köszönőoldalra -->
               <input
                 type="hidden"
                 name="redirect"
-                value="https://mestervillamossag.hu/koszonon.html"
+                value="https://mestervillamossag.hu/koszonom.html"
               />
 
               <!-- E-mail tárgya -->
@@ -452,6 +452,7 @@
                   placeholder="pl. Kovács János"
                 />
               </div>
+
               <div>
                 <label class="block text-sm font-medium text-slate-300 mb-2"
                   >Telefonszáma</label
@@ -460,12 +461,26 @@
                   type="tel"
                   name="Telefon"
                   required
-                  pattern="[0-9+\s-]{9,}"
-                  title="Kérjük adjon meg egy érvényes telefonszámot (pl. +36 30 123 4567)"
+                  pattern="^(?:\+36|06)\s*(?:1|20|30|31|50|70)\s*\d{3}\s*\d{4}$"
+                  title="Kérjük valós magyar mobil- vagy körzetszámmal adjon meg (pl. +36 30 123 4567 vagy 06301234567)"
                   class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"
                   placeholder="pl. +36 30 123 4567"
                 />
               </div>
+
+              <!-- Új E-mail mező -->
+              <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2"
+                  >E-mail címe (opcionális)</label
+                >
+                <input
+                  type="email"
+                  name="Email"
+                  class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"
+                  placeholder="pl. kovacs.janos@gmail.com"
+                />
+              </div>
+
               <div>
                 <label class="block text-sm font-medium text-slate-300 mb-2"
                   >Üzenet / Feladat leírása</label
