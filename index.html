@@ -415,11 +415,17 @@
           <!-- Email kiküldő űrlap -->
           <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
             <form
-              action="mailto:mestergyorgy9@gmail.com"
+              action="https://api.web3forms.com/submit"
               method="POST"
-              enctype="text/plain"
               class="space-y-6"
             >
+              <!-- Ide be kell tenned a saját ingyenes kulcsodat, amit a web3forms.com-on kapsz (1 perc regisztráció) -->
+              <input
+                type="hidden"
+                name="access_key"
+                value="9cbaba25-4f74-4ddd-acdf-47f264bd1f1e"
+              />
+
               <div>
                 <label class="block text-sm font-medium text-slate-300 mb-2"
                   >Az Ön neve</label
@@ -472,8 +478,7 @@
                     target="_blank"
                     class="text-amber-400 underline hover:text-amber-300"
                     >Adatvédelmi tájékoztatót</a
-                  >, és hozzájárulok a megadott adatok e-mailben történő
-                  továbbításához.
+                  >, és hozzájárulok a megadott adatok kezeléséhez.
                 </label>
               </div>
 
@@ -481,7 +486,7 @@
                 type="submit"
                 class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-amber-500/10"
               >
-                Üzenet küldése e-mailben
+                Üzenet küldése
               </button>
             </form>
           </div>
