@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="hu" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impresszum - Mester György E.V.</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+    <!-- Megtiltjuk a Google-nek, hogy indexelje ezt az aloldalt -->
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              amber: {
+                500: "#f59e0b",
+                600: "#d97706",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950"
+  >
+    <div>
+      <!-- Header / Navbar (Ugyanolyan telefonszám gombbal, mint a főoldalon) -->
+      <header
+        class="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800"
+      >
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+        >
+          <a
+            href="index.html"
+            class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2"
+          >
+            <span class="text-amber-500">⚡</span> Mester György
+            <span
+              class="text-xs uppercase px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full"
+              >E.V.</span
+            >
+          </a>
+          <nav
+            class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300"
+          >
+            <a
+              href="index.html#rolam"
+              class="hover:text-amber-400 transition-colors"
+              >Rólam</a
+            >
+            <a
+              href="index.html#szolgaltatások"
+              class="hover:text-amber-400 transition-colors"
+              >Szolgáltatások</a
+            >
+            <a
+              href="index.html#elonyok"
+              class="hover:text-amber-400 transition-colors"
+              >Miért én?</a
+            >
+            <a
+              href="index.html#kapcsolat"
+              class="hover:text-amber-400 transition-colors"
+              >Kapcsolat</a
+            >
+          </nav>
+          <div class="flex items-center gap-4">
+            <a
+              href="tel:+36704292322"
+              class="hidden sm:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-amber-500/10"
+            >
+              <span>📞</span> +36 70 429 2322
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div class="max-w-4xl">
+          <!-- Vissza gomb a contentben -->
+          <div class="mb-8">
+            <a
+              href="index.html"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-amber-400 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl transition-colors"
+            >
+              <span>←</span> Vissza a főoldalra
+            </a>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl font-black mb-8 text-white">
+            Impresszum
+          </h1>
+
+          <div
+            class="space-y-6 text-slate-300 leading-relaxed text-sm sm:text-base"
+          >
+            <p class="text-slate-400">
+              A weboldalon szolgáltatást nyújtó és a honlap tartalmáért felelős
+              egyéni vállalkozó adatai:
+            </p>
+
+            <div
+              class="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl"
+            >
+              <div
+                class="grid grid-cols-1 sm:grid-cols-3 gap-2 border-b border-slate-800 pb-4"
+              >
+                <span class="text-slate-400 font-medium"
+                  >Szolgáltató / Név:</span
+                >
+                <span class="sm:col-span-2 text-white font-semibold"
+                  >Mester György E.V.</span
+                >
+              </div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-3 gap-2 border-b border-slate-800 pb-4"
+              >
+                <span class="text-slate-400 font-medium">Tevékenység:</span>
+                <span class="sm:col-span-2 text-white font-semibold"
+                  >Villanyszerelés, épületvillamosság</span
+                >
+              </div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-3 gap-2 border-b border-slate-800 pb-4"
+              >
+                <span class="text-slate-400 font-medium">Telefonszám:</span>
+                <span class="sm:col-span-2 text-white font-semibold"
+                  ><a
+                    href="tel:+36704292322"
+                    class="text-amber-400 hover:underline"
+                    >+36 70 429 2322</a
+                  ></span
+                >
+              </div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-3 gap-2 border-b border-slate-800 pb-4"
+              >
+                <span class="text-slate-400 font-medium">E-mail cím:</span>
+                <span class="sm:col-span-2 text-white font-semibold"
+                  ><a
+                    href="mailto:mestergyorgy9@gmail.com"
+                    class="text-amber-400 hover:underline"
+                    >mestergyorgy9@gmail.com</a
+                  ></span
+                >
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <span class="text-slate-400 font-medium"
+                  >Tárhelyszolgáltató:</span
+                >
+                <span class="sm:col-span-2 text-white font-semibold"
+                  >GitHub Inc. (GitHub Pages)</span
+                >
+              </div>
+            </div>
+
+            <h2 class="text-xl font-bold text-white pt-4">Szerzői jogok</h2>
+            <p>
+              A weboldalon található szövegek, képek és grafikai elemek Mester
+              György szellemi tulajdonát képezik. Azok bármilyen formában
+              történő felhasználása, másolása vagy terjesztése kizárólag a
+              jogosult előzetes írásbeli engedélyével lehetséges.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer (Főoldal linkkel az elején) -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-12">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-400"
+      >
+        <div>&copy; 2010 – 2026 Mester György E.V. Minden jog fenntartva.</div>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="index.html" class="hover:text-amber-400 transition-colors"
+            >Főoldal</a
+          >
+          <a
+            href="impresszum.html"
+            class="hover:text-amber-400 transition-colors"
+            >Impresszum</a
+          >
+          <a
+            href="adatvedelem.html"
+            class="hover:text-amber-400 transition-colors"
+            >Adatvédelmi nyilatkozat</a
+          >
+          <a
+            href="index.html#kapcsolat"
+            class="hover:text-amber-400 transition-colors"
+            >Kapcsolat</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
