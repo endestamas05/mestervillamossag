@@ -425,7 +425,7 @@
                 name="access_key"
                 value="9cbaba25-4f74-4ddd-acdf-47f264bd1f1e"
               />
-              
+
               <!-- Irányítás a saját köszönőoldalunkra -->
               <input
                 type="hidden"
@@ -460,6 +460,8 @@
                   type="tel"
                   name="Telefon"
                   required
+                  pattern="[0-9+\s-]{9,}"
+                  title="Kérjük adjon meg egy érvényes telefonszámot (pl. +36 30 123 4567)"
                   class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"
                   placeholder="pl. +36 30 123 4567"
                 />
