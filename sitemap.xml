@@ -3,21 +3,28 @@
     <!-- Főoldal -->
     <url>
         <loc>https://mestervillamossag.hu/</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <!-- Impresszum -->
     <url>
         <loc>https://mestervillamossag.hu/impresszum.html</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
-    <!-- Adatvédelmi nyilatkozat -->
+    <!-- Adatvédelmi tájékoztató -->
     <url>
         <loc>https://mestervillamossag.hu/adatvedelem.html</loc>
-        <lastmod>2026-10-12</lastmod>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <!-- Cookie-tájékoztató -->
+    <url>
+        <loc>https://mestervillamossag.hu/cookie.html</loc>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
