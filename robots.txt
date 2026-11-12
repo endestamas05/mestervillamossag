@@ -1,0 +1,5 @@
+# Minden kereső bejárhatja az oldalt
+User-agent: *
+Allow: /
+
+Sitemap: https://mestervillamossag.hu/sitemap.xml

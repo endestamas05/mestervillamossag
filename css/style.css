@@ -196,6 +196,7 @@ a { color: inherit; }
    Gombok
    -------------------------------------------------------------------------- */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -214,6 +215,27 @@ a { color: inherit; }
 .btn:active { transform: translateY(1px) scale(0.99); }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: #ffbb1f; }
+
+/* Szikra a gomb sarkán, amikor az egér rámegy (érintőképernyőn nincs) */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  width: 22px;
+  height: 22px;
+  background: url("../images/spark.svg") center / contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .btn-primary:hover::after { animation: spark 0.45s var(--ease-out); }
+}
+@keyframes spark {
+  0% { opacity: 0; transform: scale(0.3); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.15) rotate(25deg); }
+}
 .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
 .btn-ghost:hover { border-color: var(--ink); }
 .btn svg { flex: none; width: 1.125rem; height: 1.125rem; }
@@ -281,19 +303,56 @@ a { color: inherit; }
 }
 
 /* --------------------------------------------------------------------------
-   Görgetés-jelző „vezeték” a bal szélen.
-   A JS a scaleY értékét állítja 0 és 1 között a görgetés arányában.
+   Görgetés-áramkör a bal szélen.
+   .circuit: halvány nyomvonal (mindig látszik); .scroll-wire: a töltődő vezeték,
+   a JS a scaleY értékét állítja 0 és 1 között a görgetés arányában.
+   .circuit-node: forrpont szekciónként; a JS teszi ki és kapcsolja az .is-lit osztályt,
+   amikor a vezeték eleje odaér. JS nélkül az egész rejtve marad.
    -------------------------------------------------------------------------- */
-.scroll-wire {
+.circuit {
+  display: none;
   position: fixed;
-  inset: 0 auto 0 0;
+  top: 0;
+  bottom: 0;
+  left: 0.5rem;
   z-index: 60;
   width: 3px;
+  background: rgb(128 128 128 / 0.25);
+  pointer-events: none;
+}
+.js .circuit { display: block; }
+
+.scroll-wire {
+  position: absolute;
+  inset: 0;
   background: var(--accent);
   transform: scaleY(0);
   transform-origin: top;
-  pointer-events: none;
 }
+
+.circuit-node {
+  position: absolute;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border: 2px solid #8a8f94;
+  border-radius: 50%;
+  background: var(--bg);
+}
+/* Kigyulladt állapot: külön rétegen, hogy csak opacity és transform animálódjon */
+.circuit-node::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgb(242 169 0 / 0.25), 0 0 12px rgb(242 169 0 / 0.7);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.25s, transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+.circuit-node.is-lit::after { opacity: 1; transform: none; }
 
 /* --------------------------------------------------------------------------
    Hero
@@ -378,10 +437,40 @@ a { color: inherit; }
 .contact-point { fill: var(--accent); }
 .lamp-ring { fill: var(--bg); stroke: var(--line); stroke-width: 2.5; transition: stroke 0.3s; }
 .lamp-cross { stroke: var(--muted); stroke-width: 2.5; transition: stroke 0.3s; }
-.lamp-glow { opacity: 1; transition: opacity 0.5s 0.5s; }
+.lamp-glow { opacity: 1; transition: opacity 0.2s; }
 .hero[data-on="true"] .lamp-ring,
 .hero[data-on="true"] .lamp-cross { stroke: var(--accent); transition-delay: 0.45s; }
-.hero[data-on="false"] .lamp-glow { opacity: 0; transition-delay: 0s; transition-duration: 0.2s; }
+.hero[data-on="false"] .lamp-glow { opacity: 0; }
+
+/* Bekapcsoláskor a lámpa fénycsőszerűen, pár villanással gyullad be.
+   Az animáció minden bekapcsoláskor újraindul, mert a szelektor ilyenkor kezd illeszkedni. */
+.hero[data-on="true"] .lamp-glow { animation: tube-start 0.8s 0.9s both; }
+@keyframes tube-start {
+  0% { opacity: 0; }
+  12% { opacity: 0.7; }
+  18% { opacity: 0.1; }
+  34% { opacity: 0.85; }
+  42% { opacity: 0.25; }
+  62%, 100% { opacity: 1; }
+}
+
+/* Áramló pontok: rövid szaggatás kerek végekkel = pontsor.
+   A szaggatás eltolása (dashoffset) végtelenítve mozgatja a pontokat a vonal irányában.
+   Egy periódus 0.1 + 18 = 18.1 egység, ezért ennyivel toljuk el. */
+.wire-flow {
+  fill: none;
+  stroke: #fff1c2;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 18;
+  opacity: 0;
+  transition: opacity 0.2s;
+  animation: flow 0.9s linear infinite;
+}
+.hero[data-on="true"] .wire-flow { opacity: 0.9; transition: opacity 0.4s 1.1s; }
+@keyframes flow {
+  to { stroke-dashoffset: -18.1; }
+}
 
 /* A kapcsoló karja a felső érintkezőhöz zár; a forgáspont az alsó érintkező */
 .switch-arm {
@@ -564,6 +653,53 @@ a { color: inherit; }
 .spec-grid dt { margin-bottom: var(--space-1); font-size: var(--text-h3); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
 .spec-grid dd { margin: 0; color: var(--muted); }
 
+/* Fejléc + műszerkijelző egymás mellett, széles kijelzőn */
+.benefits-head { display: grid; gap: var(--space-4); margin-bottom: var(--space-5); }
+.benefits-head .section-head { margin-bottom: 0; }
+@media (min-width: 62rem) {
+  .benefits-head { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+}
+
+/* Műszerkijelző: mindig sötét panel, sárga szegmensekkel */
+.meter {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  padding: 0.5rem;
+  background: #0f1316;
+  border: 1px solid #2d343a;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
+}
+.meter-readout { padding: 1rem 1.25rem 0.875rem; background: #0b0f12; border-radius: 3px; }
+.meter-value {
+  min-height: 3.25rem;
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  line-height: 1.3;
+  color: var(--accent);
+}
+.meter-value svg { height: 3.25rem; width: auto; }
+.meter-unit { margin-top: 0.5rem; font-family: var(--font-mono); font-size: var(--text-sm); color: #aab2ba; }
+
+/* Szegmensek: a nem világító „szellem” szegmens halványan látszik, mint a valódi kijelzőn */
+.seg { fill: #f2a900; opacity: 0.07; transition: opacity 0.08s; }
+.seg.on { opacity: 1; }
+
+@media (max-width: 24rem) {
+  .meter-readout { padding-inline: 0.75rem; }
+  .meter-value svg { height: 2.5rem; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 @media (min-width: 40rem) { .spec-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 68rem) { .spec-grid { grid-template-columns: repeat(4, 1fr); } }
 
@@ -577,6 +713,30 @@ a { color: inherit; }
 .contact-option { padding: clamp(1.25rem, 1rem + 2vw, 2.5rem); border-bottom: 1px solid var(--line); }
 .contact-option h3 { margin-bottom: var(--space-1); font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.04em; color: var(--accent-text); }
 .contact-option p { margin-top: var(--space-1); color: var(--muted); }
+
+/* „Feszültség alatt” jelzőfény: a gyűrű tágul és elhalványul, mint egy pulzáló LED */
+.led {
+  position: relative;
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-right: 0.625rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgb(242 169 0 / 0.8);
+}
+.led::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: led-pulse 2.2s ease-out infinite;
+}
+@keyframes led-pulse {
+  from { opacity: 0.8; transform: scale(1); }
+  to { opacity: 0; transform: scale(2.6); }
+}
 .contact-value {
   font-size: clamp(1.25rem, 1rem + 1.4vw, 2rem);
   font-weight: 600;
@@ -671,7 +831,7 @@ th { background: var(--surface); font-weight: 600; }
     animation: none !important;
     transition: none !important;
   }
-  .scroll-wire { display: none; }
+  .js .circuit, .wire-flow, .led::after { display: none; }
   .js .reveal { opacity: 1; transform: none; }
   .js .reveal .breaker i { transform: none; background: var(--accent); }
 }
